@@ -1,0 +1,28 @@
+*:focus {outline:none !important}
+.form {
+    margin-top: 20px;
+}
+.input {
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.input:focus {
+    border: 2px solid #CAE5E8;
+}
+.submitBtn {
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 60px;
+    height: 23px;
+    background-color: #fff;
+    color: #000; 
+}
+
+.submitBtn:hover {
+    border: 1px solid #CAE5E8;
+    background-color: #CAE5E8;
+    color: #fff; 
+}

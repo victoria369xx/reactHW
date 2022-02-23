@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import  {MessageList}  from './components';
 import {Form} from './components'
@@ -6,15 +6,32 @@ import {Form} from './components'
 
 function App() {
 
-  const [list, setList] = useState ([
-   {author: "Jack", text: "Hello please call me"},
-  {author: "Megan", text: "I need to buy some books"} 
-  ])
+  const [list, setList] = useState ([]);
 
   function updateList (msg) {
-    setList (list => list.push({author:`${msg.author}`, text:`${msg.text}`})) 
-    console.log(list)
-  }
+    const newList = [...list];
+    newList.push(msg)
+    setList (newList) 
+  };
+
+  useEffect(()=> {
+    if (list.length === 0) {
+      return;
+    }
+
+    const lastMsg = list[list.length - 1];
+
+    if (lastMsg.author === "Bot") {
+      return;
+    }
+
+    const botReply = {author: "Bot", text: "Your message has been sent"}
+
+    setTimeout(()=>{
+      updateList (botReply)
+    }, 1000)
+
+  })
 
   return (
     <div className='wrapper'>

@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
 import  {MessageList}  from './components';
 import {Form} from './components'
-
+import Container from '@mui/material/Container'
+import {ChatList} from './components'
+import Box from '@mui/material/Box'
 
 function App() {
 
@@ -34,11 +35,16 @@ function App() {
   })
 
   return (
-    <div className='wrapper'>
-      <h1 className='heading'>React App</h1>
-     <MessageList list={list}/>
+    <Container maxWidth="sm"> 
+      <h2 className='heading'>React App</h2>
+      <Box sx={{ display: 'flex',
+                 justifyContent: 'space-between',
+                 alignSelf:'center' }}>
+        <ChatList/>
+     <MessageList list={list}/> 
+     </Box>
       <Form onSent={updateList}/>
-    </div>
+    </Container>
   );
 }
 

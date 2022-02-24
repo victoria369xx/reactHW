@@ -1,35 +1,22 @@
 import React, {useState} from "react";
-import './Form.css'
+import Button from '@mui/material/Button'
+import TextField from "@mui/material/TextField";
 
 export function Form (props){
     const [text, setMsgText] = useState('');
     const [author, setMsgAuthor] = useState('');
     let [msg, setMsg] = useState({});
 
-    function clearForm () {
-        setMsgText(" ");
-        setMsgAuthor(" ");
-    }
-
     function submitHandler (event) {
             event.preventDefault();
-            if (author === " ") {
-                alert ('Укажите автора сообщения!')
-                return
-            }
-            if (text === " ") {
-                alert ('Введите текст сообщения!')
-                return
-            }
             setMsg(msg = {author:author,text:text})
             props.onSent(msg)
-            clearForm();
     }
     return (
         <form onSubmit={submitHandler} className="form">
-            <input type='text' className="input" value={author} onChange={event => setMsgAuthor(event.target.value)} placeholder='Author' required/>
-            <input type='text' className="input" value={text} onChange={event => setMsgText(event.target.value)} placeholder='Text' required/>
-            <button type='submit' className="submitBtn"> Send </button>
+            <TextField sx={{mr:1}} required size="small" id="outlined-required" label="Author"  defaultValue={author} onChange={event => setMsgAuthor(event.target.value)}/>
+            <TextField sx={{mr:1}} required size="small" id="outlined-required" label="Text"  defaultValue={text} onChange={event => setMsgText(event.target.value)}/>
+            <Button sx={{p:1}} variant="outlined" size="small" type='submit' className="submitBtn"> Send </Button>
         </form>
     )
 }

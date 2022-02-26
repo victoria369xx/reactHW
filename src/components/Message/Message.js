@@ -1,13 +1,24 @@
 import React from 'react';
+import propTypes  from 'prop-types';
+import Box from '@mui/material/Box'
+
 
 export function Message(props) {
   
   return (
-      <div>
-    <p className='authorName'> <strong>{props.item.author} :</strong></p>
-    <div className='messageBody'>
-    <p className='messageText'> {props.item.text}</p>
-    </div>
-    </div>
+      <Box sx={{
+        mb:2
+      }}>
+    <p> <strong>{props.item.author} :</strong></p>
+    <Box sx={{
+      boxShadow:1,
+      borderRadius: '3px',
+      padding: 1
+    }}> {props.item.text}</Box>
+    </Box>
   );
+}
+
+Message.propTypes = {
+  item: propTypes.object
 }

@@ -1,13 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import  {MessageList}  from './components';
-import {Form} from './components'
-import Container from '@mui/material/Container'
-import {ChatList} from './components'
-import Box from '@mui/material/Box'
+import {Form} from './components';
+import {ChatList} from './components';
+import { nanoid } from 'nanoid';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid'
+
 
 function App() {
 
-  const [list, setList] = useState ([]);
+  const [list, setList] = useState ([]); 
+
+  const allChats = [
+    {name: 'Anna', id: nanoid()},
+    {name: 'Viktor', id: nanoid()},
+    {name: 'Jack', id: nanoid()},
+    {name: 'Mary', id: nanoid()},
+];
 
   function updateList (msg) {
     const newList = [...list];
@@ -35,16 +44,21 @@ function App() {
   })
 
   return (
-    <Container maxWidth="sm"> 
-      <h2 className='heading'>React App</h2>
-      <Box sx={{ display: 'flex',
-                 justifyContent: 'space-between',
-                 alignSelf:'center' }}>
-        <ChatList/>
-     <MessageList list={list}/> 
-     </Box>
+    <Container maxWidth="sm">
+      <h1>React App</h1> 
+        <Grid container sx={{
+          boxShadow:1,
+          borderRadius: '3px'
+        }}>
+            <Grid item xs={4}>
+              <ChatList chats={allChats}/>
+            </Grid>
+            <Grid item xs={6}>
+              <MessageList list={list}/>
+            </Grid>
+        </Grid>
       <Form onSent={updateList}/>
-    </Container>
+      </Container>
   );
 }
 

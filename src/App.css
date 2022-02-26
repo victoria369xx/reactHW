@@ -1,6 +1,6 @@
 .wrapper {
     margin: 0 auto;
-    max-width: 1140px;
+    max-width: 568px;
 }
 
 .heading {
@@ -8,4 +8,12 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: 300;
     text-transform: uppercase;
+}
+
+.gridContainer {
+    display: grid; 
+    grid-template-columns: 200px 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 20px 0px; 
+    border: 1px solid #ccc;
 }

@@ -1,7 +1,7 @@
 import React from 'react'; 
 import propTypes  from 'prop-types';
 import { ChatItem } from '../ChatItem/ChatItem';
-import List from '@mui/material/List'
+import List from '@mui/material/List';
 
 export function ChatList (props) {
     return (

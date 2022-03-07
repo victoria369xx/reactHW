@@ -6,15 +6,15 @@ import { nanoid } from 'nanoid';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid'
 
+export const allChats = [
+  {name: 'Anna', id: nanoid()},
+  {name: 'Viktor', id: nanoid()},
+  {name: 'Jack', id: nanoid()},
+  {name: 'Mary', id: nanoid()},
+];
+
 export default function Chats ({children}) {
  const [list, setList] = useState ([]); 
-
-  const allChats = [
-    {name: 'Anna', id: nanoid()},
-    {name: 'Viktor', id: nanoid()},
-    {name: 'Jack', id: nanoid()},
-    {name: 'Mary', id: nanoid()},
-];
 
   function updateList (msg) {
     const newList = [...list];

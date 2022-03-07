@@ -1,8 +1,12 @@
 import React from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, Redirect } from 'react-router-dom';
+import { allChats } from '../Chats/Chats';
 
 export default function Chat () {
-    const {chatId} = useParams() 
+    const {chatId} = useParams();
+    if (!allChats.find(({id})=> id === chatId)) {
+        return <Redirect to="/chats"/>
+    }
 
     return (
         <div>

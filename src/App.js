@@ -5,6 +5,8 @@ import Profile from './routs/Profile/Profile';
 import Chats from './routs/Chats/Chats';
 import Chat from './routs/Chat/Chat';
 import Container  from '@mui/material/Container';
+import {Provider} from 'react-redux';
+import {store} from './store';
 
 
 
@@ -12,6 +14,7 @@ import Container  from '@mui/material/Container';
 function App() {
 
   return (
+    <Provider store={store}>
     <Container>
        <BrowserRouter>
 
@@ -52,6 +55,7 @@ function App() {
         </BrowserRouter>
 
     </Container>
+    </Provider>
   );
 }
 

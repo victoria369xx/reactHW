@@ -9,25 +9,21 @@ import {nanoid} from 'nanoid';
 export function ChatList () {
     const chatList = useSelector(getChatList);
     const dispatch = useDispatch();
-  
 
     function addChatHandler () {
+      const id = nanoid();
         dispatch(addChat({
-          id: nanoid(),
-          name: `Chat_${nanoid()}`
+          id: id,
+          name: `Chat_${id}`
         }))
-    }
-
-    function deleteChatHandler (id) {
-      console.log(id)
     }
 
     return ( <div>
         <List sx={{ml:2, mt:2}}>
         {
-          chatList.map((item, id) => {return <div>
-            <ChatItem item={item} key={nanoid()}/>
-            <button key={nanoid()} onClick={deleteChatHandler(item.id)}> X </button>
+          chatList.map((item, idx) => {return <div>
+            <ChatItem item={item} key={idx}/>
+            
           </div> 
         })
         } 

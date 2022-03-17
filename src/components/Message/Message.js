@@ -9,7 +9,6 @@ export function Message(props) {
       <Box sx={{
         mb:2
       }}>
-    <p> <strong>{props.item.author} :</strong></p>
     <Box sx={{
       boxShadow:1,
       borderRadius: '3px',

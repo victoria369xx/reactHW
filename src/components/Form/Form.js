@@ -5,11 +5,12 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch } from "react-redux";
 import { createMessage } from "../../store/messages/action";
+import { useParams } from "react-router-dom";
 
 
 export function Form (){
-    const author = 'User';
-    let text = "Hello from user";
+    const {chatId} = useParams();
+    let message = " ";
     const dispatch = useDispatch();
 
     const inputRef = useRef(null);
@@ -19,13 +20,12 @@ export function Form (){
       });
 
       function clearForm () {
-          text = " "
+          message = " "
       }
 
     function submitHandler (event) {
             event.preventDefault();
-            let msg = {author:author,text:text};
-            dispatch(createMessage(msg))
+            dispatch(createMessage(chatId, message))
             clearForm();
     }
     return (
@@ -35,7 +35,7 @@ export function Form (){
             justifyContent: 'center'
         }}>
         <form onSubmit={submitHandler}>
-        <Input  required  inputRef={inputRef} id="outlined-required"  label="Enter your message here" size="small"  value={text} sx={{mr:1}}/>
+        <Input  required  inputRef={inputRef} id="outlined-required"  label="Enter your message here" size="small"  value={message} sx={{mr:1}}/>
             <Button type='submit' variant="contained" size="medium" sx={{p:1}}> <SendIcon/> </Button>
         </form>
         </Box>

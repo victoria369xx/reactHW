@@ -1,18 +1,23 @@
 import {CREATE_MESSAGE} from './action';
 
 const initialState = {
-    messageList: []
+    messageList: {
+        fsdfsddsf: [{text: "Test message!"}]
+    }
 }
 
 export const messageReducer = (state = initialState, action) => {
     switch (action.type) {
         case(CREATE_MESSAGE): {
+            const {chatId, message} = action.payload;
             return {
-                ...state,
-            messageList: [
+            messageList: {
                     ...state.messageList,
-                    action.payload
-                ]
+                    [chatId]: [
+                        ...(state.messageList[chatId] || []),
+                        message
+                    ]
+            }
             }
         }
         default: {

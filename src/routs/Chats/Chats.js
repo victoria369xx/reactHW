@@ -1,18 +1,18 @@
-import React, {useEffect} from 'react';
+//import React, {useEffect} from 'react';
 import {ChatList} from '..//..//components';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid'
-import { useDispatch, useSelector } from 'react-redux';
-import {getMessageList} from '../../store/messages/selector';
-import {createMessage} from '../../store/messages/action';
+//import { useDispatch, useSelector } from 'react-redux';
+//import {getMessageList} from '../../store/messages/selector';
+//import {createMessage} from '../../store/messages/action';
 
 
 
 export default function Chats ({children}) {
- const list = useSelector(getMessageList); 
- const dispatch = useDispatch(); 
+ //const list = useSelector(getMessageList); 
+ //const dispatch = useDispatch(); 
 
-  useEffect(()=> {
+  /*useEffect(()=> {
     if (list.length === 0) {
       return;
     }
@@ -29,7 +29,7 @@ export default function Chats ({children}) {
       dispatch(createMessage(botReply))
     }, 1000)
 
-  })
+  }) */
     return (
         <Container maxWidth="sm">
       <h1>React App</h1> 

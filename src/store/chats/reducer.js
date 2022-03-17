@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 
 const initialState = {
     chatList: [
+        {id: 'fsdfsddsf', name: 'Test'},
         {id: nanoid(), name: 'Anna'},
         {id: nanoid(), name: 'Viktor'},
         {id: nanoid(), name: 'Jack'},

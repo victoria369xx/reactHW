@@ -1,26 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import  {MessageList}  from '..//..//components';
-import {Form} from '..//..//components';
+import React, {useEffect} from 'react';
 import {ChatList} from '..//..//components';
-import { nanoid } from 'nanoid';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid'
+import { useDispatch, useSelector } from 'react-redux';
+import {getMessageList} from '../../store/messages/selector';
+import {createMessage} from '../../store/messages/action';
 
-export const allChats = [
-  {name: 'Anna', id: nanoid()},
-  {name: 'Viktor', id: nanoid()},
-  {name: 'Jack', id: nanoid()},
-  {name: 'Mary', id: nanoid()},
-];
+
 
 export default function Chats ({children}) {
- const [list, setList] = useState ([]); 
-
-  function updateList (msg) {
-    const newList = [...list];
-    newList.push(msg)
-    setList (newList) 
-  };
+ const list = useSelector(getMessageList); 
+ const dispatch = useDispatch(); 
 
   useEffect(()=> {
     if (list.length === 0) {
@@ -36,7 +26,7 @@ export default function Chats ({children}) {
     const botReply = {author: "Bot", text: "Your message has been sent"}
 
     setTimeout(()=>{
-      updateList (botReply)
+      dispatch(createMessage(botReply))
     }, 1000)
 
   })
@@ -48,16 +38,12 @@ export default function Chats ({children}) {
           borderRadius: '3px'
         }}>
             <Grid item>
-              <ChatList chats={allChats}/>
-            </Grid>
-            <Grid item>
-              <MessageList list={list}/>
+              <ChatList/>
             </Grid>
             <Grid item>
             {children}
             </Grid>
         </Grid>
-      <Form onSent={updateList}/>
       </Container>
     )
 }

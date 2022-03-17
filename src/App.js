@@ -7,7 +7,7 @@ import Chat from './routs/Chat/Chat';
 import Container  from '@mui/material/Container';
 import {Provider} from 'react-redux';
 import {store} from './store';
-import {ChatTest} from './routs/ChatsTest/ChatTest'
+
 
 
 
@@ -29,9 +29,6 @@ function App() {
             <li>
             <Link to="/chats">Chats</Link>
             </li>
-            <li>
-            <Link to="/chatsTest">ChatTest</Link>
-            </li>
         </ul>
   
         <Switch>
@@ -49,8 +46,6 @@ function App() {
             </Switch>
         </Chats>
         </Route>
-
-        <Route exact path="/chatsTest" component={ChatTest}/>
 
         <Route>
           <h2> 404 Page not found</h2>

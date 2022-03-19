@@ -18,13 +18,11 @@ export function ChatList () {
         }))
     }
 
+
     return ( <div>
         <List sx={{ml:2, mt:2}}>
         {
-          chatList.map((item, idx) => {return <div>
-            <ChatItem item={item} key={idx}/>
-            
-          </div> 
+          chatList.map((item, idx) => {return  <ChatItem item={item} key= {idx}/>
         })
         } 
     </List> 

@@ -18,13 +18,13 @@ export function ChatList () {
         }))
     }
 
-
+  
     return ( <div>
         <List sx={{ml:2, mt:2}}>
         {
-          chatList.map((item, idx) => {return  <ChatItem item={item} key= {idx}/>
-        })
-        } 
+          chatList.map((item, idx) => {return  <ChatItem item={item} key= {idx}/> 
+        }) 
+      }
     </List> 
     <button onClick={addChatHandler}> add chat + </button>
     </div>

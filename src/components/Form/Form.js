@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 
 export function Form (){
     const {chatId} = useParams();
-    let message = " ";
+    let text = "Hello";
     const dispatch = useDispatch();
 
     const inputRef = useRef(null);
@@ -20,11 +20,15 @@ export function Form (){
       });
 
       function clearForm () {
-          message = " "
+          text = " "
       }
 
     function submitHandler (event) {
             event.preventDefault();
+            let message = {
+                author: "User",
+                text: text
+            }
             dispatch(createMessage(chatId, message))
             clearForm();
     }
@@ -35,7 +39,7 @@ export function Form (){
             justifyContent: 'center'
         }}>
         <form onSubmit={submitHandler}>
-        <Input  required  inputRef={inputRef} id="outlined-required"  label="Enter your message here" size="small"  value={message} sx={{mr:1}}/>
+        <Input  required  inputRef={inputRef} id="outlined-required"  label="Enter your message here" size="small"  value={text} sx={{mr:1}}/>
             <Button type='submit' variant="contained" size="medium" sx={{p:1}}> <SendIcon/> </Button>
         </form>
         </Box>

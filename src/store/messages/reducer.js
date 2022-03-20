@@ -2,7 +2,7 @@ import {CREATE_MESSAGE} from './action';
 
 const initialState = {
     messageList: {
-        fsdfsddsf: [{text: "Test message!"}]
+
     }
 }
 
@@ -13,7 +13,7 @@ export const messageReducer = (state = initialState, action) => {
             return {
             messageList: {
                     ...state.messageList,
-                    [chatId]: [
+                    [chatId] : [
                         ...(state.messageList[chatId] || []),
                         message
                     ]

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams, Redirect } from 'react-router-dom';
 import { getChatList } from '../../store/chats/selectors';
 import {MessageList} from '../../components';
-import {Form} from '../../components';
+
 
 
 export default function Chat () {
@@ -17,7 +17,6 @@ export default function Chat () {
         <div>
             <h3> Chat {chatId}</h3>
             <MessageList/>
-            <Form />
         </div>
         
     )

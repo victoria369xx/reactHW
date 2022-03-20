@@ -1,28 +1,27 @@
-import React, { useRef, useEffect} from "react";
+import React, { useState, useRef, useEffect} from "react";
 import Box from '@mui/material/Box';
 import Input from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { createMessage } from "../../store/messages/action";
 import { useParams } from "react-router-dom";
 
 
 export function Form (){
     const {chatId} = useParams();
-    let text = "Hello";
     const dispatch = useDispatch();
-
     const inputRef = useRef(null);
-
     useEffect(() => {
         inputRef.current.focus();
       });
 
-      function clearForm () {
-          text = " "
-      }
+      const [text, setMsgTxt] = useState('') 
 
+    function clearForm () {
+        setMsgTxt(' ')
+      }
+    
     function submitHandler (event) {
             event.preventDefault();
             let message = {
@@ -30,7 +29,7 @@ export function Form (){
                 text: text
             }
             dispatch(createMessage(chatId, message))
-            clearForm();
+            clearForm ()
     }
     return (
         <Box sx={{
@@ -39,7 +38,7 @@ export function Form (){
             justifyContent: 'center'
         }}>
         <form onSubmit={submitHandler}>
-        <Input  required  inputRef={inputRef} id="outlined-required"  label="Enter your message here" size="small"  value={text} sx={{mr:1}}/>
+        <Input  required  inputRef={inputRef} id="outlined-required"  label="Enter your message here" size="small"  value={text} sx={{mr:1}} onChange={event => setMsgTxt(event.target.value)}/>
             <Button type='submit' variant="contained" size="medium" sx={{p:1}}> <SendIcon/> </Button>
         </form>
         </Box>

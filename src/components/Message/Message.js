@@ -9,6 +9,7 @@ export function Message(props) {
       <Box sx={{
         mb:2
       }}>
+        <h3> {props.item.author}</h3>
     <Box sx={{
       boxShadow:1,
       borderRadius: '3px',

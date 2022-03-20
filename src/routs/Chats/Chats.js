@@ -1,46 +1,20 @@
-//import React, {useEffect} from 'react';
+import React from 'react';
 import {ChatList} from '..//..//components';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid'
-//import { useDispatch, useSelector } from 'react-redux';
-//import {getMessageList} from '../../store/messages/selector';
-//import {createMessage} from '../../store/messages/action';
+
 
 
 
 export default function Chats ({children}) {
- //const list = useSelector(getMessageList); 
- //const dispatch = useDispatch(); 
-
-  /*useEffect(()=> {
-    if (list.length === 0) {
-      return;
-    }
-
-    const lastMsg = list[list.length - 1];
-
-    if (lastMsg.author === "Bot") {
-      return;
-    }
-
-    const botReply = {author: "Bot", text: "Your message has been sent"}
-
-    setTimeout(()=>{
-      dispatch(createMessage(botReply))
-    }, 1000)
-
-  }) */
     return (
-        <Container maxWidth="sm">
+        <Container maxWidth="md" >
       <h1>React App</h1> 
-        <Grid container sx={{
-          boxShadow:1,
-          borderRadius: '3px'
-        }}>
-            <Grid item>
+        <Grid container xs={12} spacing={2}>
+            <Grid item xs={4}>
               <ChatList/>
             </Grid>
-            <Grid item>
+            <Grid item xs={6}>
             {children}
             </Grid>
         </Grid>

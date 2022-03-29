@@ -1,8 +1,8 @@
+
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import  {MessageList}  from './components';
 import {Form} from './components'
-
 
 function App() {
 
@@ -36,8 +36,10 @@ function App() {
   return (
     <div className='wrapper'>
       <h1 className='heading'>React App</h1>
+
      <MessageList list={list}/>
       <Form onSent={updateList}/>
+
     </div>
   );
 }

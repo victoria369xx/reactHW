@@ -7,6 +7,8 @@ import Chat from './routs/Chat/Chat';
 import Container  from '@mui/material/Container';
 import {Provider} from 'react-redux';
 import {store} from './store';
+import {persistor} from './store/index';
+import { PersistGate } from 'redux-persist/integration/react';
 
 
 
@@ -16,6 +18,7 @@ function App() {
 
   return (
     <Provider store={store}>
+      <PersistGate persistor={persistor}>
     <Container>
        <BrowserRouter>
 
@@ -56,6 +59,7 @@ function App() {
         </BrowserRouter>
 
     </Container>
+    </PersistGate>
     </Provider>
   );
 }

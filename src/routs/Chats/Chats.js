@@ -10,7 +10,7 @@ export default function Chats ({children}) {
     return (
         <Container maxWidth="md" >
       <h1>React App</h1> 
-        <Grid container xs={12} spacing={2}>
+        <Grid item container xs={12} spacing={2}>
             <Grid item xs={4}>
               <ChatList/>
             </Grid>

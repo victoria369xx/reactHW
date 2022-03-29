@@ -4,7 +4,7 @@ import Input from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch} from "react-redux";
-import { createMessage } from "../../store/messages/action";
+import { createMessageThunk } from "../../store/messages/action";
 import { useParams } from "react-router-dom";
 
 
@@ -28,7 +28,7 @@ export function Form (){
                 author: "User",
                 text: text
             }
-            dispatch(createMessage(chatId, message))
+            dispatch(createMessageThunk(chatId, message))
             clearForm ()
     }
     return (

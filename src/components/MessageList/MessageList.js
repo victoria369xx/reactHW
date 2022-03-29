@@ -10,25 +10,6 @@ export function MessageList() {
   const {chatId} = useParams();
   const messageList = useSelector((state)=> state.messages.messageList[chatId]) 
 
-  /*useEffect(()=> {
-    if (messageList.length === 0) {
-      return
-    }
-
-    const lastMsg = messageList[messageList.length - 1];
-
-    if (lastMsg.author === "Bot") {
-      return;
-    }
-
-    const botReply = {author: "Bot", text: "Your message has been sent"}
-
-    setTimeout(()=>{
-      dispatch(createMessage(chatId,botReply))
-    }, 1000)
-
-  }) */
-
   return (
     <Box sx={{ml:6}}>
         {

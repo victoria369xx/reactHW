@@ -19,7 +19,7 @@ export const setShibaPic = (picture) => ({
     payload: picture
 })
 
-export const getShibaThunk = async (dispatch) => {
+export const getShibaThunk = ()=> async (dispatch) => {
    dispatch(setLoadingShiba(true))
 
    try {

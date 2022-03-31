@@ -4,6 +4,7 @@ import Home from './routs/Home/Home';
 import Profile from './routs/Profile/Profile';
 import Chats from './routs/Chats/Chats';
 import Chat from './routs/Chat/Chat';
+import Shiba from './routs/Shiba/Shiba';
 import Container  from '@mui/material/Container';
 import {Provider} from 'react-redux';
 import {store} from './store';
@@ -29,8 +30,11 @@ function App() {
             <li style={{marginRight:'20px'}}>
             <Link to="/profile">Profile</Link>
             </li>
-            <li>
+            <li style={{marginRight:'20px'}}>
             <Link to="/chats">Chats</Link>
+            </li>
+            <li>
+              <Link to="/shiba">Shiba API</Link>
             </li>
         </ul>
   
@@ -49,6 +53,8 @@ function App() {
             </Switch>
         </Chats>
         </Route>
+
+        <Route path="/shiba" component={Shiba}/>
 
         <Route>
           <h2> 404 Page not found</h2>

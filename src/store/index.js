@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import { profileReducer } from './profile/reducer';
 import { chatsReducer } from './chats/reducer';
 import { messageReducer } from './messages/reducer';
+import { shibaReducer } from './shiba/reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__; 
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     profile: profileReducer,
     chats: chatsReducer,
     messages: messageReducer,
+    shibaApi: shibaReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

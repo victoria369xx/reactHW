@@ -4,12 +4,11 @@ import Home from './routs/Home/Home';
 import Profile from './routs/Profile/Profile';
 import Chats from './routs/Chats/Chats';
 import Chat from './routs/Chat/Chat';
-import Shiba from './routs/Shiba/Shiba';
+import TestApi from './routs/TestApi/TestApi';
 import Container  from '@mui/material/Container';
 import {Provider} from 'react-redux';
 import {store} from './store';
-import {persistor} from './store/index';
-import { PersistGate } from 'redux-persist/integration/react';
+
 
 
 
@@ -19,7 +18,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
+      
     <Container>
        <BrowserRouter>
 
@@ -34,7 +33,7 @@ function App() {
             <Link to="/chats">Chats</Link>
             </li>
             <li>
-              <Link to="/shiba">Shiba API</Link>
+              <Link to="/api">API</Link>
             </li>
         </ul>
   
@@ -54,7 +53,7 @@ function App() {
         </Chats>
         </Route>
 
-        <Route path="/shiba" component={Shiba}/>
+        <Route path="/api" component={TestApi}/>
 
         <Route>
           <h2> 404 Page not found</h2>
@@ -65,7 +64,7 @@ function App() {
         </BrowserRouter>
 
     </Container>
-    </PersistGate>
+  
     </Provider>
   );
 }

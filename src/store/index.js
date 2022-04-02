@@ -1,31 +1,23 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 import { profileReducer } from './profile/reducer';
 import { chatsReducer } from './chats/reducer';
 import { messageReducer } from './messages/reducer';
-import { shibaReducer } from './shiba/reducer';
+import { apiReducer } from './api/reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__; 
 
-const persistConfig = {
-    key: 'root',
-    storage
-}
+
 
 const rootReducer = combineReducers({
     profile: profileReducer,
     chats: chatsReducer,
     messages: messageReducer,
-    shibaApi: shibaReducer
+    testApi: apiReducer
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = createStore(
-persistedReducer, 
+rootReducer,
 composeEnhancers(applyMiddleware(thunk))
 );
-
-export const persistor = persistStore(store)

@@ -1,29 +1,29 @@
-import { SET_ERROR_SHIBA, SET_LOADING_SHIBA, SET_SHIBA_PIC } from "./actions";
+import { SET_ERROR_API, SET_LOADING_API, SET_API_PIC } from "./actions";
 
 const initialState = {
-    pictureUrl: '',
+    pictureUrl: null,
     isLoading: false,
     error: null
 }
 
-export const shibaReducer = (state = initialState, action) => {
+export const apiReducer = (state = initialState, action) => {
     switch(action.type) {
 
-        case(SET_LOADING_SHIBA): {
+        case(SET_LOADING_API): {
             return {
                 ...state,
                 isLoading: action.payload
             }
         }
 
-        case(SET_ERROR_SHIBA): {
+        case(SET_ERROR_API): {
             return {
                 ...state,
                 error: action.payload
             }
         }
 
-        case(SET_SHIBA_PIC): {
+        case(SET_API_PIC): {
             return {
                 ...state,
                 pictureUrl: action.payload

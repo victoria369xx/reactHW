@@ -1,6 +1,6 @@
-const requestUrl = 'http://shibe.online/api/shibes?count=[1-100]&urls=[true/false]&httpsUrls=[true/false]'
+const requestUrl = 'https://randomfox.ca/floof/'
 
-export const shibaApi = {
+export const testApi = {
     get: async () => {
             const response = await fetch(requestUrl)
             if (!response.ok) {

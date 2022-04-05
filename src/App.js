@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Switch, Route, Link, BrowserRouter} from 'react-router-dom';
 import Home from './routs/Home/Home';
 import Profile from './routs/Profile/Profile';
@@ -6,15 +6,24 @@ import Chats from './routs/Chats/Chats';
 import Chat from './routs/Chat/Chat';
 import TestApi from './routs/TestApi/TestApi';
 import Container  from '@mui/material/Container';
-import {Provider} from 'react-redux';
-import {store} from './store';
+import {Provider, useDispatch, useSelector} from 'react-redux';
+import {store} from './store'; 
 
-
+import {getIsAuth} from './store/user/selectors';
+import { initAuthAction } from './store/user/actions';
+import {PrivateRoute} from './hocs/PrivateRoute';
+import {PublicRoute} from './hocs/PublicRoute';
 
 
 
 
 function App() {
+  const isAuth = useSelector(getIsAuth); 
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(initAuthAction)
+  })
 
   return (
     <Provider store={store}>
@@ -35,14 +44,20 @@ function App() {
             <li>
               <Link to="/api">API</Link>
             </li>
+            <li>
+              <Link to="/logIn"> Log In</Link>
+            </li>
+            <li>
+              <Link to="/signUp">Sign Up</Link>
+            </li>
         </ul>
   
         <Switch>
-        <Route exact path="/" component={Home}/>
+        <PublicRoute exact path="/" auth={isAuth} component={Home}/>
 
-        <Route exact path="/profile" component={Profile}/>
+        <PrivateRoute exact path="/profile" auth={isAuth} component={Profile}/>
       
-        <Route path="/chats">
+        <PrivateRoute path="/chats">
         <Chats>
             <Switch> 
               <Route path="/chats/:chatId" component={Chat}/>
@@ -51,13 +66,13 @@ function App() {
               </Route>
             </Switch>
         </Chats>
-        </Route>
+        </PrivateRoute>
 
-        <Route path="/api" component={TestApi}/>
+        <PublicRoute path="/api" component={TestApi}/>
 
-        <Route>
+        <PublicRoute>
           <h2> 404 Page not found</h2>
-        </Route>
+        </PublicRoute>
 
       </Switch>
 

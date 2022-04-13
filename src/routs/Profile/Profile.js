@@ -1,22 +1,17 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import { MARK_CHECKBOX } from '../../store/profile/actions';
+import {useSelector} from 'react-redux';
+import { getUser } from '../../store/user/selectors';
+
 
 
 export default function Profile () {
-    const dispatch = useDispatch();
-    const isMarked = useSelector((state)=> state.isMarked)
-
-    const markCheckbox = () => {
-        dispatch({
-            type: MARK_CHECKBOX
-        })
-    }
+    const user = useSelector(getUser())
+  
+    
     return (
         <div>
             <h1> Profile </h1>
-            <input type='checkbox' id="checkbox" checked={isMarked} onChange={markCheckbox}/>
-            <label htmlFor="checkbox">checkbox</label>
+            Logged in with {user.email}
         </div>
     )
 }

@@ -30,21 +30,18 @@ function App() {
     <Container>
         <ul style={{display:'flex', listStyleType:'none'}}>
             <Link to="/" style={{marginRight: '20px'}}>Home</Link>
-            <Link to="/profile" style={{marginRight: '20px'}}>Profile</Link>
-            <Link to="/api" >API</Link>
+            <Link to="/api">API</Link>
         </ul>
   
         <Switch>
         <Switch>
-          <PublicRoute auth={isAuth} exact path="/" component={Home}/>
+          <Route auth={isAuth} exact path="/" component={Home}/>
           <PublicRoute auth={isAuth} exact path ="/login" component={LogIn}/>
-          <PublicRoute auth={isAuth} exact path ="/signup" component={SignUp}/> 
+          <Route auth={isAuth} exact path ="/signup" component={SignUp}/> 
         </Switch> 
 
-
-        <Switch> 
         <PrivateRoute auth={isAuth} exact path="/profile" component={Profile}/>
-      <Route path="/chats">
+      <PrivateRoute path="/chats">
       <Chats>
           <Switch> 
             <Route path="/chats/:chatId" component={Chat}/>
@@ -53,8 +50,8 @@ function App() {
             </Route>
           </Switch>
       </Chats>
-      </Route>
-        </Switch> 
+      </PrivateRoute>
+       
 
         <PublicRoute auth={isAuth} path="/api" component={TestApi}/>
     

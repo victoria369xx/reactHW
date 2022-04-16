@@ -5,28 +5,39 @@ import Button from '@mui/material/Button';
 import { useDispatch } from "react-redux";
 import { signUpUserThunk } from "../../store/user/actions";
 
+
+
 export default function SignUp () {
 
     const [email, setEmail] = useState(''); 
     const [password, setPassword] = useState(''); 
     const dispatch = useDispatch(); 
 
+    function emailSubmitHandler (event) {
+        setEmail(event.target.value)
+    }
+
+    function passwordSubmitHandler (event) {
+        setPassword(event.target.value)
+    }
+
     function clearForm () {
         setEmail("");
         setPassword("");
     }
 
-    function signUpHandler (event) {
+   function signUpHandler (event) {
         event.preventDefault()
-        dispatch(signUpUserThunk)
+        dispatch(signUpUserThunk(email,password))
         clearForm()
     }
 
     return <div>
         <h1>SignUp page</h1>
+    
         <form style={{display:"flex", flexDirection:"column"}} onSubmit={signUpHandler}>
-            <Input type="email" placeholder="Email" size="small" style={{width:"300px"}} value={email} onChange={event => setEmail(event.target.value)}/>
-            <Input type="password" placeholder="Password" size="small" style={{width:"300px"}} value={password} onChange={event => setPassword(event.target.value)}/>
+            <Input type="email" placeholder="Email" size="small" style={{width:"300px"}} value={email} onChange={emailSubmitHandler}/>
+            <Input type="password" placeholder="Password" size="small" style={{width:"300px"}} value={password} onChange={passwordSubmitHandler}/>
             <Button type="submit" variant="contained" size="medium" style={{width:"150px"}}>Sign Up</Button>
         </form>
         <p>

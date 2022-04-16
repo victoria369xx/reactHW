@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGOUT_USER } from "./actions"
+import { LOGIN_USER, LOGOUT_USER, SIGNUP_USER } from "./actions"
 
 const initialState = {
     user: null
@@ -15,6 +15,12 @@ export const userReducer = (state = initialState, action)=> {
         case(LOGOUT_USER): {
             return {
                 user: null
+            }
+        }
+
+        case(SIGNUP_USER): {
+            return {
+                user: action.payload
             }
         }
 

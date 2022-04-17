@@ -1,9 +1,9 @@
 import React from "react";
-import Button from '@mui/material/Button'
 import { useDispatch, useSelector} from "react-redux";
 import { getApiPicThunk } from "../../store/api/actions";
 import { getErrorApi, getLoadingApi, getApiPicUrl } from "../../store/api/selector";
-import { CircularProgress } from "@mui/material";
+
+import { CircularProgress, Button } from "@mui/material";
 
 
 export default function TestApi () {
@@ -18,7 +18,7 @@ export default function TestApi () {
 
    
     return (
-        <div>
+        <div style={{marginTop:"5rem"}}>
             <h1>Hi, I'm a page about Foxes ❤️</h1>
             <p>You can press the button below and see some fox 🦊 ️</p>
             <Button variant="outlined" color="warning" onClick={requestHandler}> Try it</Button>

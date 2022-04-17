@@ -11,10 +11,12 @@ export function MessageList() {
   const messageList = useSelector((state)=> state.messages.messageList[chatId]) 
 
   return (
-    <Box sx={{ml:6}}>
+    <Box sx={{ml:6}} style={{display:"flex", flexDirection:"column"}}>
+      <Box> 
         {
           messageList?.map((item, idx) => {return <Message item={item} key={idx}/>})
         }
+        </Box>
         <Form/>
     </Box>
   );

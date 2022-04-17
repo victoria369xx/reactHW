@@ -38,7 +38,7 @@ export default function LogIn () {
         <form style={{display:"flex", flexDirection:"column"}} onSubmit={logInHandler}>
             <Input type="email" placeholder="Email" size="small" style={{width:"300px"}} value={email} onChange={emailSubmitHandler}/>
             <Input type="password" placeholder="Password" size="small" style={{width:"300px"}} value={password} onChange={passwordSubmitHandler}/>
-            <Button type="submit" variant="contained" size="medium" style={{width:"150px"}}>Sign Up</Button>
+            <Button type="submit" variant="contained" size="medium" style={{width:"150px"}}>Log in</Button>
         </form>
 
         <p>

@@ -9,10 +9,11 @@ import LogIn from './routs/LogIn/LogIn';
 import SignUp from './routs/SignUp/SignUp';
 import Container  from '@mui/material/Container';
 import { useDispatch, useSelector} from 'react-redux';
-import {getIsAuth} from './store/user/selectors';
-import { initAuthAction } from './store/user/actions';
+import { initAuthAction, logOutUserThunk} from './store/user/actions';
 import {PrivateRoute} from './hocs/PrivateRoute';
 import {PublicRoute} from './hocs/PublicRoute';
+import {getIsAuth} from './store/user/selectors';
+import Button from '@mui/material/Button';
 
 
 
@@ -20,28 +21,34 @@ import {PublicRoute} from './hocs/PublicRoute';
 
 function App() {
   const dispatch = useDispatch();
-  const isAuth = useSelector(getIsAuth);
+  const authed = useSelector(getIsAuth);
 
+ 
   useEffect(()=> {
     dispatch(initAuthAction);
   });
 
+function logOutHandler () {
+  dispatch(logOutUserThunk)
+}
   return (
     <Container>
         <ul style={{display:'flex', listStyleType:'none'}}>
             <Link to="/" style={{marginRight: '20px'}}>Home</Link>
             <Link to="/api">API</Link>
+            <Button variant="contained" size="medium" onClick={logOutHandler}> Log Out </Button>
         </ul>
   
         <Switch>
-        <Switch>
-          <Route auth={isAuth} exact path="/" component={Home}/>
-          <PublicRoute auth={isAuth} exact path ="/login" component={LogIn}/>
-          <Route auth={isAuth} exact path ="/signup" component={SignUp}/> 
-        </Switch> 
+        
+          <PublicRoute auth={authed}  exact path="/" component={Home}/>
+          <PublicRoute  auth={authed} exact path ="/login" component={LogIn}/>
+          <PublicRoute  auth={authed} exact path ="/signup" component={SignUp}/> 
+      
 
-        <PrivateRoute auth={isAuth} exact path="/profile" component={Profile}/>
-      <PrivateRoute path="/chats">
+          <PrivateRoute auth={authed} exact path="/profile" component={Profile}/>
+
+          <Route path="/chats">
       <Chats>
           <Switch> 
             <Route path="/chats/:chatId" component={Chat}/>
@@ -50,10 +57,10 @@ function App() {
             </Route>
           </Switch>
       </Chats>
-      </PrivateRoute>
+      </Route>
        
 
-        <PublicRoute auth={isAuth} path="/api" component={TestApi}/>
+        <PublicRoute auth={authed} path="/api" component={TestApi}/>
     
         <Route>
           <h2> 404 Page not found</h2>

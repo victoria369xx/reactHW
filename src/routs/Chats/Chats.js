@@ -1,7 +1,8 @@
 import React from 'react';
 import {ChatList} from '..//..//components';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid'
+import Grid from '@mui/material/Grid';
+import {Link} from 'react-router-dom';
 
 
 
@@ -9,7 +10,6 @@ import Grid from '@mui/material/Grid'
 export default function Chats ({children}) {
     return (
         <Container maxWidth="md" >
-      <h1>React App</h1> 
         <Grid item container xs={12} spacing={2}>
             <Grid item xs={4}>
               <ChatList/>
@@ -18,6 +18,7 @@ export default function Chats ({children}) {
             {children}
             </Grid>
         </Grid>
+        <Link to="/profile" style={{marginBottom: '2rem'}}>Profile</Link>
       </Container>
     )
 }

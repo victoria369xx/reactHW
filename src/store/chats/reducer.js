@@ -1,19 +1,12 @@
-import {ADD_CHAT} from './action';
-import { DELETE_CHAT } from './action';
-import { nanoid } from 'nanoid';
+import {ADD_CHAT_SUCCESS, REMOVE_CHAT, RESET_CHATS} from './action';
 
 const initialState = {
-    chatList: [
-        {id: nanoid(), name: 'Anna'},
-        {id: nanoid(), name: 'Viktor'},
-        {id: nanoid(), name: 'Jack'},
-        {id: nanoid(), name: 'Mary'}
-    ]
+    chatList: []
 }
 
 export const chatsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case(ADD_CHAT): {
+        case(ADD_CHAT_SUCCESS): {
             return {
                 ...state,
                 chatList: [
@@ -22,11 +15,15 @@ export const chatsReducer = (state = initialState, action) => {
                 ]
             }
         }
-        case(DELETE_CHAT): {
+        case(REMOVE_CHAT): {
             return {
                 ...state,
                 chatList: state.chatList.filter(({id})=> id !== action.payload)   
             }
+        }
+
+        case(RESET_CHATS): {
+            return initialState
         }
         default: {
             return state;

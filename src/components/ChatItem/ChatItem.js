@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React, { useEffect } from 'react'; 
 import propTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem'
@@ -8,14 +8,21 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {Link} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {deleteChat} from '../../store/chats/action';
+import {removeChat, removeChatTrackerOff, removeChatTrackerOn} from '../../store/chats/action';
 
 
 export function ChatItem (props) {
     const dispatch = useDispatch(); 
 
+    useEffect(()=> {
+        dispatch(removeChatTrackerOn)
+        return () => {
+            dispatch(removeChatTrackerOff)
+        }
+    }, [])
+
     const deleteChatHandler = (id) => () => { 
-        dispatch(deleteChat({id}))
+        dispatch(removeChat({id}))
     }
     
    

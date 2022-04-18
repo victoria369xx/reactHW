@@ -17,4 +17,10 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 export const auth = firebaseApp.auth();
-export const db = firebaseApp.database();
+export const db = firebaseApp.database(); 
+
+export const rootRef = db.ref('root'); 
+
+export const profileRef = db.ref('profile');
+export const chatsRef = profileRef.child('chats');
+export const messagesRef = chatsRef.child('messages');

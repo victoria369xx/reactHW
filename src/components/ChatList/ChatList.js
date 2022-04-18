@@ -1,20 +1,25 @@
-import React from 'react'; 
+import React, { useEffect } from 'react'; 
 import { ChatItem } from '../ChatItem/ChatItem';
 import List from '@mui/material/List';
 import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChatList } from '../../store/chats/selectors';
-import {addChat} from '../../store/chats/action';
-import {nanoid} from 'nanoid';
+import {addChatAction, addChatTrackerOff, addChatTrackerOn} from '../../store/chats/action';
 
 export function ChatList () {
     const chatList = useSelector(getChatList);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); 
+
+    useEffect(()=>{
+      dispatch(addChatTrackerOn)
+      return () => {
+        dispatch(addChatTrackerOff)
+      }
+    }, [])
 
     function addChatHandler () {
-      const id = nanoid();
-        dispatch(addChat({
-          id: id,
+  
+        dispatch(addChatAction({
           name: `New_Chat`
         }))
     }

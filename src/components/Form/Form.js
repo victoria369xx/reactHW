@@ -4,7 +4,7 @@ import Input from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch} from "react-redux";
-import { createMessageThunk } from "../../store/messages/action";
+import { createMessageAction, createMessageTrackerOn, createMessageTrackerOff } from "../../store/messages/action";
 import { useParams } from "react-router-dom";
 
 
@@ -14,7 +14,11 @@ export function Form (){
     const inputRef = useRef(null);
     useEffect(() => {
         inputRef.current.focus();
-      });
+        dispatch(createMessageTrackerOn)
+        return () => {
+          dispatch(createMessageTrackerOff)
+        }
+      }, []);
 
       const [text, setMsgTxt] = useState('') 
 
@@ -28,7 +32,7 @@ export function Form (){
                 author: "User",
                 text: text
             }
-            dispatch(createMessageThunk(chatId, message))
+            dispatch(createMessageAction(chatId, message))
             clearForm ()
     }
     return (

@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {Link} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {removeChat, removeChatTrackerOff, removeChatTrackerOn} from '../../store/chats/action';
+import {removeChatAction, removeChatTrackerOff, removeChatTrackerOn} from '../../store/chats/action';
 
 
 export function ChatItem (props) {
@@ -22,7 +22,7 @@ export function ChatItem (props) {
     }, [])
 
     const deleteChatHandler = (id) => () => { 
-        dispatch(removeChat({id}))
+        dispatch(removeChatAction(id))
     }
     
    

@@ -11,7 +11,7 @@ export const addChatSuccess = (chat) => ({
     payload: chat
 }); 
 
-export const removeChat = ({id}) => ({
+export const removeChat = (id) => ({
     type: "REMOVE_CHAT",
     payload: id
 }); 
@@ -46,6 +46,12 @@ export const addChatTrackerOn = (dispatch) => {
 export const addChatTrackerOff = (dispatch) => {
     dispatch(resetChats());
     chatsRef.off('child_added')
+}
+
+export const removeChatAction = (id) => ()=> {
+    chatsRef.child(id).remove(()=>{
+        
+    })
 }
 
 export const removeChatTrackerOn = (dispatch) => {

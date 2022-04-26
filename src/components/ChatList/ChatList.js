@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react'; 
+import React, { useEffect, useState } from 'react'; 
 import { ChatItem } from '../ChatItem/ChatItem';
-import List from '@mui/material/List';
-import Button from '@mui/material/Button';
+import {List, Button, TextField} from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChatList } from '../../store/chats/selectors';
 import {addChatAction, addChatTrackerOff, addChatTrackerOn} from '../../store/chats/action';
 
+
 export function ChatList () {
     const chatList = useSelector(getChatList);
     const dispatch = useDispatch(); 
+
+    const [chatName, setChatName] = useState('')
 
     useEffect(()=>{
       dispatch(addChatTrackerOn)
@@ -20,12 +22,13 @@ export function ChatList () {
     function addChatHandler () {
   
         dispatch(addChatAction({
-          name: `New_Chat`
+          name: chatName
         }))
     }
 
   
     return ( <div>
+      <TextField placeholder='Enter chat name' size='small' value={chatName} onChange={event => setChatName(event.target.value)}/>
       <Button variant="outlined" onClick={addChatHandler}> add chat + </Button>
         <List sx={{ml:2, mt:2}}>
         {

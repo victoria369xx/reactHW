@@ -1,22 +1,26 @@
-import {CREATE_MESSAGE} from './action';
+import {ADD_MESSAGE_SUCCESS, RESET_MESSAGES} from './action';
 
 const initialState = {
-    messageList: { },
+    messageList: {},
 }
 
 export const messageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case(CREATE_MESSAGE): {
-            const {chatId, message} = action.payload;
+        case(ADD_MESSAGE_SUCCESS): {
             return {
-            messageList: {
+                ...state,
+                messageList: {
                     ...state.messageList,
-                    [chatId] : [
-                        ...(state.messageList[chatId] || []),
-                        message
+                    [action.payload.chatId]: [
+                        ...(state.messageList[action.payload.chatId] || []),
+                        action.payload.message
                     ]
+                }
             }
-            }
+        }
+
+        case(RESET_MESSAGES): {
+            return initialState
         }
 
 

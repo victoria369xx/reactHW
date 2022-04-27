@@ -1,7 +1,6 @@
 import { chatsRef } from "../../firebase";
 
 export const ADD_CHAT_SUCCESS = "ADD_CHAT_SUCCESS";
-export const ADD_CHAT_FAIL = "ADD_CHAT_FAIL"; 
 export const REMOVE_CHAT = "REMOVE_CHAT";
 export const RESET_CHATS = "RESET_CHATS"; 
 

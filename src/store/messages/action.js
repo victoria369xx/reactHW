@@ -1,45 +1,51 @@
-import { chatsRef} from "../../firebase";
+import { messagesRef } from "../../firebase";
 
-export const CREATE_MESSAGE = "CREATE_MESSAGE";
-export const DELETE_MESSAGE = "DELETE_MESSAGE";
+export const ADD_MESSAGE_SUCCESS = "ADD_MESSAGE_SUCCESS";
+export const DELETE_MESSAGE = "REMOVE_MESSAGE";
+export const RESET_MESSAGES = "RESET_MESSAGES";
 
-export const createMessage = (chatId, message) => ({
-    type: "CREATE_MESSAGE",
+export const addMessageSuccess = (chatId, message) => ({
+    type: "ADD_MESSAGE_SUCCESS",
     payload: {
         chatId,
         message
     }
 });
 
-export const createMessageFail = (error) => ({
-    type: "CREATE_MESSAGE_FAIL",
+export const addMessageFail = (error) => ({
+    type: "ADD_MESSAGE_FAIL",
     payload: error
 }); 
 
-export const deleteMessage = (id) => ({
-    type: "DELETE_MESSAGE",
+export const removeMessage = (id) => ({
+    type: "REMOVE_MESSAGE",
     payload: id
 })
 
+export const resetMessages = () => ({
+    type: "RESET_MESSAGES"
+})
 
-export const createMessageAction = (chatId, message) => (dispatch)=> {
-    chatsRef.child(chatId).push(message, (error) => {
+
+export const addMessageAction = (chatId, message) => (dispatch)=> {
+    messagesRef(chatId).push(message, (error) => {
         if(error){
-            dispatch(createMessageFail(error))
+            dispatch(addMessageFail(error))
         }
     })
 }
 
-export const createMessageTrackerOn = (chatId) =>(dispatch) => {
-    chatsRef.child(chatId).on('child_added', (snapshot) =>{
-        dispatch(createMessage({
+export const addMessageTrackerOn = (chatId) =>(dispatch) => {
+    messagesRef(chatId).on('child_added', (snapshot) =>{
+        dispatch(addMessageSuccess({
             ...snapshot.val(),
             id: snapshot.key
         }))
     })
 }
 
-export const createMessageTrackerOff = (chatId) => () => {
-    chatsRef.child(chatId).off('child_added');
+export const addMessageTrackerOff = (chatId) => (dispatch) => {
+    dispatch(resetMessages());
+    messagesRef(chatId).off('child_added');
 }
 

@@ -4,8 +4,9 @@ import Input from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch} from "react-redux";
-import { createMessageAction} from "../../store/messages/action";
+import { addMessageAction} from "../../store/messages/action";
 import { useParams } from "react-router-dom";
+
 
 
 export function Form (){
@@ -27,7 +28,7 @@ export function Form (){
             let message = {
                 text: text
             }
-            dispatch(createMessageAction(chatId, message))
+            dispatch(addMessageAction(chatId, message))
             clearForm ()
     }
     return (

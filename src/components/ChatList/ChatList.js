@@ -22,7 +22,8 @@ export function ChatList () {
     function addChatHandler () {
   
         dispatch(addChatAction({
-          name: chatName
+          name: chatName,
+          messages: {}
         }))
     }
 

@@ -1,8 +1,7 @@
-import {CREATE_MESSAGE, SET_MSG_TXT} from './action';
+import {CREATE_MESSAGE} from './action';
 
 const initialState = {
     messageList: { },
-    message: {}
 }
 
 export const messageReducer = (state = initialState, action) => {
@@ -20,14 +19,6 @@ export const messageReducer = (state = initialState, action) => {
             }
         }
 
-        case(SET_MSG_TXT): {
-            return {
-                message: {
-                    author: "User",
-                    text: action.payload
-                }
-            }
-        }
 
         default: {
             return state;

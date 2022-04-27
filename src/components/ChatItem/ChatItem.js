@@ -30,7 +30,7 @@ export function ChatItem (props) {
             <Box sx={{display: 'flex'}}> 
                  <ListItem sx={{ borderBottom: 1, borderBottomColor: '#ccc'}} component={Link} to={`/chats/${props.item.id}`}>
                 <Avatar sx={{mr:2}}><PersonIcon/></Avatar>
-                 {props.item.name}</ListItem><Button onClick={deleteChatHandler(props.item.id)}> <DeleteIcon/></Button>
+                {props.item.name}</ListItem><Button onClick={deleteChatHandler(props.item.id)}> <DeleteIcon/></Button>
             </Box>
             
             

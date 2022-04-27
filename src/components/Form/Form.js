@@ -29,7 +29,6 @@ export function Form (){
     function submitHandler (event) {
             event.preventDefault();
             let message = {
-                author: "User",
                 text: text
             }
             dispatch(createMessageAction(chatId, message))

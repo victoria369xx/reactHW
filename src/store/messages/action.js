@@ -1,7 +1,6 @@
 import { chatsRef} from "../../firebase";
 
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
-export const SET_MSG_TXT = "SET_MSG_TXT";
 export const DELETE_MESSAGE = "DELETE_MESSAGE";
 
 export const createMessage = (chatId, message) => ({
@@ -44,8 +43,3 @@ export const createMessageTrackerOff = (chatId) => () => {
     chatsRef.child(chatId).off('child_added');
 }
 
-
-export const setMsgTxt = (text) => ({
-    type: "SET_MSG_TXT",
-    payload: text
-})

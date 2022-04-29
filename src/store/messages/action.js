@@ -4,6 +4,7 @@ export const ADD_MESSAGE_SUCCESS = "ADD_MESSAGE_SUCCESS";
 export const DELETE_MESSAGE = "REMOVE_MESSAGE";
 export const RESET_MESSAGES = "RESET_MESSAGES";
 
+
 export const addMessageSuccess = (chatId, message) => ({
     type: "ADD_MESSAGE_SUCCESS",
     payload: {
@@ -28,7 +29,7 @@ export const resetMessages = () => ({
 
 
 export const addMessageAction = (chatId, message) => (dispatch)=> {
-    messagesRef(chatId).push(message, (error) => {
+    messagesRef.child(chatId).push(message, (error) => {
         if(error){
             dispatch(addMessageFail(error))
         }
@@ -36,7 +37,7 @@ export const addMessageAction = (chatId, message) => (dispatch)=> {
 }
 
 export const addMessageTrackerOn = (chatId) =>(dispatch) => {
-    messagesRef(chatId).on('child_added', (snapshot) =>{
+    messagesRef.child(chatId).on('child_added', (snapshot) =>{
         dispatch(addMessageSuccess({
             ...snapshot.val(),
             id: snapshot.key
@@ -46,6 +47,6 @@ export const addMessageTrackerOn = (chatId) =>(dispatch) => {
 
 export const addMessageTrackerOff = (chatId) => (dispatch) => {
     dispatch(resetMessages());
-    messagesRef(chatId).off('child_added');
+    messagesRef.child(chatId).off('child_added');
 }
 

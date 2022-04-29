@@ -7,17 +7,17 @@ const initialState = {
 export const messageReducer = (state = initialState, action) => {
     switch (action.type) {
         case(ADD_MESSAGE_SUCCESS): {
+            const {chatId, message} = action.payload;
             return {
-                ...state,
-                messageList: {
+            messageList: {
                     ...state.messageList,
-                    [action.payload.chatId]: [
-                        ...(state.messageList[action.payload.chatId] || []),
-                        action.payload.message
+                    [chatId] : [
+                        ...(state.messageList[chatId] || []),
+                        message
                     ]
-                }
-            }
+            } 
         }
+    }
 
         case(RESET_MESSAGES): {
             return initialState

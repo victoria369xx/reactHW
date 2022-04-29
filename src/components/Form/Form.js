@@ -8,11 +8,11 @@ import { addMessageAction} from "../../store/messages/action";
 import { useParams } from "react-router-dom";
 
 
-
 export function Form (){
     const {chatId} = useParams();
     const dispatch = useDispatch();
     const inputRef = useRef(null);
+
     useEffect(() => {
         inputRef.current.focus();
       }, []);

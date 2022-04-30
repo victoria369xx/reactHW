@@ -25,10 +25,7 @@ export function Form (){
     
     function submitHandler (event) {
             event.preventDefault();
-            let message = {
-                text: text
-            }
-            dispatch(addMessageAction(chatId, message))
+            dispatch(addMessageAction(chatId, text))
             clearForm ()
     }
     return (

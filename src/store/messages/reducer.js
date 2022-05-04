@@ -6,19 +6,20 @@ const initialState = {
 
 export const messageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case(ADD_MESSAGE_SUCCESS): {
-            const {chatId, message} = action.payload;
-            const newMessages = {...state.messageList};
+       case(ADD_MESSAGE_SUCCESS): {
+        const copyMsgs = {...state.messageList};
 
-            newMessages[chatId] = [
-                    message,
-                ...(newMessages[chatId] || []),
-              ]
-            return {
-                ...state,
-                messageList: newMessages
+        copyMsgs[action.payload.chatId] = [
+          action.payload.message,
+          ...(copyMsgs[action.payload.chatId] || []),
+        ]
+  
+        return {
+          ...state,
+          messageList: copyMsgs
         }
     }
+    
 
         case(RESET_MESSAGES): {
             return initialState

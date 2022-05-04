@@ -4,6 +4,7 @@ export const ADD_MESSAGE_SUCCESS = "ADD_MESSAGE_SUCCESS";
 export const ADD_MESSAGE_FAIL = "ADD_MESSAGE_FAIL";
 export const RESET_MESSAGES = "RESET_MESSAGES";
 
+
 export const addMessageSuccess = (chatId, message) => ({
     type: "ADD_MESSAGE_SUCCESS",
     payload: {
@@ -32,12 +33,14 @@ export const addMessageAction = (chatId, message) => (dispatch) => {
 
 export const addMessageTrackerOn = (chatId) => (dispatch) => {
     messagesRef.child(chatId).on('child_added', (snapshot)=> {
-        dispatch(addMessageSuccess({
-            chatId,
-            ...snapshot.val()
-        }))
+        const message = {
+            id: snapshot.key,
+            text: snapshot.val(),
+        }
+        dispatch(addMessageSuccess(chatId, message))
     })
-};
+}; 
+
 
 export const addMessageTrackerOff = (chatId) => (dispatch) => {
     dispatch(resetMessages());

@@ -13,11 +13,11 @@ export function Message(props) {
       boxShadow:1,
       borderRadius: '3px',
       padding: 1
-    }}> {props.item.text}</Box>
+    }}> {props.item}</Box>
     </Box>
   );
 }
 
 Message.propTypes = {
-  item: propTypes.object
+  item: propTypes.string
 }

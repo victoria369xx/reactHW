@@ -5,7 +5,7 @@ const initialState = {
 }
 
 export const chatsReducer = (state = initialState, action) => {
-    switch (action.type) {
+    switch (action?.type) {
         case(ADD_CHAT_SUCCESS): {
             return {
                 ...state,

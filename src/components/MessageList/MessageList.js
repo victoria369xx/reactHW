@@ -25,8 +25,7 @@ export function MessageList() {
     <Box sx={{ml:6}} style={{display:"flex", flexDirection:"column"}}>
       <Box> 
         {
-          messageList?.map((item) => {return <Message item={item.text} key={item.id}/>})
-        //messageList.map((item, idx) => {return <Message item={item} key={idx}/>})
+          messageList?.map((item) => {return <Message item={item} key={item.id}/>})
         }
         </Box>
         <Form/>

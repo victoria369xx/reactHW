@@ -1,4 +1,4 @@
-import {ADD_MESSAGE_SUCCESS, RESET_MESSAGES} from './action';
+import {ADD_MESSAGE_SUCCESS, RESET_MESSAGES, REMOVE_MESSAGE} from './action';
 
 const initialState = {
     messageList: {},
@@ -20,6 +20,17 @@ export const messageReducer = (state = initialState, action) => {
         }
     }
     
+    case(REMOVE_MESSAGE): {
+
+        let copyMsgs = {...state.messageList};
+
+        copyMsgs[action.payload.chatId] = copyMsgs[action.payload.chatId].filter(({id})=> id !== action.payload.messageId)
+         //copyMsgs = copyMsgs.copyMsgs[action.payload.chatId].filter(({id})=> id !== action.payload.messageId) 
+        return {
+            ...state,
+            messageList: copyMsgs 
+        }
+    }
 
         case(RESET_MESSAGES): {
             return initialState

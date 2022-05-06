@@ -1,7 +1,7 @@
 import { initialState, chatsReducer} from "../reducer";
 import { addChatSuccess, removeChat, resetChats } from "../action";
 
-describe ('тестируем chatsReducer', ()=> {
+describe ('тестирую chatsReducer', ()=> {
     it("добавляет чат", ()=> {
         const chat = "chat1" 
         const result = chatsReducer(initialState, addChatSuccess(chat))

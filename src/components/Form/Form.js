@@ -35,7 +35,7 @@ export function Form (){
             justifyContent: 'center'
         }}>
         <form onSubmit={submitHandler}>
-        <Input  required  inputRef={inputRef} id="outlined-required"  label="Enter your message here" size="small"  value={text} sx={{mr:1}} onChange={event => setMsgTxt(event.target.value)}/>
+        <Input  required  inputRef={inputRef} id="outlined-required"  label="Enter your message here"  size="small"  value={text} sx={{mr:1}} onChange={event => setMsgTxt(event.target.value)}/>
             <Button type='submit' variant="contained" size="medium" sx={{p:1}}> <SendIcon/> </Button>
         </form>
         </Box>

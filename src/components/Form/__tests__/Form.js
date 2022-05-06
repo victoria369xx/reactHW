@@ -1,14 +1,13 @@
 
-import {act, renderHook} from "@testing-library/react-hooks";
+import {renderHook} from "@testing-library/react-hooks";
 import { useRef } from "react";
-import { Form } from "../Form";
-
+import  {Form}  from "../Form";
 
 describe("тестирую компонент-контейнер Form", ()=> {
 
-    it("setMsgTxt меняет стейт значения text", ()=> {
+    it("рендер компонента Form", ()=> {
 
-    const {result} = renderHook(()=> Form())
+     renderHook(()=> Form())
 
     jest.mock('react-router-dom', () => ({
         ...jest.requireActual('react-router-dom'),
@@ -25,4 +24,4 @@ describe("тестирую компонент-контейнер Form", ()=> {
       jest.fn(useRef)
       
     })
-})
+}) 

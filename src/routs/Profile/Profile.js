@@ -1,13 +1,11 @@
 import React from 'react';
-import {useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {getUser} from '../../store/user/selectors';
 
-
-
-
 export default function Profile () {
-  let user = useSelector(getUser);
- 
+
+const user = useSelector(getUser)
+
     return (
         <div style={{marginTop:"5rem"}}>
             <h1> Profile </h1>

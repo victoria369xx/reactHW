@@ -51,7 +51,7 @@ function logOutHandler () {
           <PublicRoute  auth={authed} exact path ="/signup" component={SignUp}/> 
       
 
-          <PrivateRoute auth={authed} exact path="/profile" component={Profile}/>
+          <PrivateRoute auth={authed} exact path="/profile"><Profile/></PrivateRoute>
 
           <PrivateRoute auth={authed} path="/chats">
       <Chats>
